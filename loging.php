@@ -3,7 +3,7 @@ session_start() ;
     include('config.php') ; 
 
     if (isset($_POST['email'])) {
-        $query = "SELECT * FROM utilisteurs_administrateurs WHERE email=:email" ;
+        $query = "SELECT * FROM utilisateurs_administrateurs WHERE email=:email" ;
        $rep = $conn->prepare($query) ;
 
     //$pwd = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT) ;

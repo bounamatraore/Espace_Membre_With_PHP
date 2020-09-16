@@ -1,6 +1,6 @@
 <?php
 
- $conn = new PDO('mysql:host=localhost;dbname= espace_membre', 'root', '') ;
+ $conn = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '') ;
 
  try {
      //echo "Connexion reussie a la base de donnee !" ;
