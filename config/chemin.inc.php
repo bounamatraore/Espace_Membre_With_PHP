@@ -1,3 +1,3 @@
 <?php
-     $FOLDER_PATH  = "/php/espace_membre" ;
+     $FOLDER_PATH  = "/espace_membre" ;
 ?>
