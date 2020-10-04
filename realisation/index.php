@@ -4,7 +4,6 @@ include 'connexion.inc.php' ;
 //Recuperation des donnees dans la base de donnee
 $query = $conn->prepare("SELECT * FROM fichiers;") ;
 $query->execute([]) ;
-//$query->bind_result($id , $nom , $description) ;
 ?>
 <!DOCTYPE html>
 <html lang="en">

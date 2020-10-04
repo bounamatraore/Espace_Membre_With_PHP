@@ -65,10 +65,10 @@ $ok = 1 ;
     }
 
 /*Selection des donnees pour comparer avec ce que l'utilisateur va entrer , si le prenom, le nom et l'email sont identique on lui envoie un message qu'il avait cree un compte il y a de cela des annees puis il revient a nouveau, s'il oublie son mot de passe on envoie des messages(de changement de mot de passe ou de se connecter s'il se souvient) */    
-    $query = "SELECT * FROM utilisateurs_administrateurs WHERE prenom=:prenom AND nom=:nom AND email=:email ;" ;
+    $query = "SELECT * FROM utilisateurs_administrateurs WHERE email=:email ;" ;
     $rep = $conn->prepare($query) ;
-    $rep->execute(array(':prenom' => $prenom, ':nom' => $nom , ':email' => $email)) ;
-    $result = $rep->fetch() ;
+    $rep->execute(array(':email' => $email)) ;
+    $result = $rep->fetchAll() ;
 
      if (!$result)   {
         
@@ -104,7 +104,8 @@ $ok = 1 ;
   
 // Si l'utilisateur est deja membre on lui demande de se connecter
     else {
-        echo "<p class='text-warning p-3 bg-dark'> Etes-vous membre ou avez-vous oublie votre mot de passe ou votre email ? <a href=\"loging.php\" class=\"btn btn-link\">cliquer ici pour se connecter </a> </p> " ;
+        echo "<p class='text-warning p-3 bg-dark'> Un compte existe déjà avec cette adresse courriel. <a href=\"loging.php\" class=\"btn btn-link\">Utilisez-la pour ouvrir une session ou entrez une autre 
+        adresse pour continuer </a> </p> " ;
     }
 }
 
