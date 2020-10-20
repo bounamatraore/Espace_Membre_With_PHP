@@ -23,7 +23,7 @@
         if ($errorMotDePasse === "" && $errorEmail ==="") {
             $query = "SELECT * FROM utilisateurs_administrateurs WHERE email=:email";
            $rep = $conn->prepare($query) ;
-           $rep->execute(array("email"=>$email)) ;
+           $rep->execute(array(":email"=>$email)) ;
      
         //$pwd = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT) ;
         //if ($rep->execute(array($email))){
@@ -39,20 +39,28 @@
                         if ($result['user_admin'] === 'utilisateur') {
                             /* On a deux choix pour acceder a la page principale . 1.choix : on le dirige avec header(location:...) function ou bien on lui demande de cliquer un lien pour acceder a la principale */
                             //header('location:index.php) ;
-                           $msg = "<p class='text-white bg-dark p-3 mt-3'> Connexion reussi ! <a href='index.php'> Cliquer pour aller a la page principale </a> </p>" ;
+                           //$msg = "<p class='text-white bg-dark p-3 mt-3'> Connexion reussi ! <a href='index.php'> Cliquer pour aller a la page principale </a> </p>" ;
+                           header("location:index.php");
                            $_SESSION['prenom'] = $result['prenom'] ;
-                           $_SESSION['nom'] = $result['nom'] ;
+                           $_SESSION["nom"] = $result['nom'] ;
                            $_SESSION['id'] = $result['id'] ;
-                        //    if(isset($_POST['connexionAutomatique'])) {
-                        //         setcookie('cookiePrenom', $_SESSION['prenom'], time()+24*80000) ;
-                        //         setcookie('cookieNom', $_SESSION['nom'], time()+24*80000) ;
-                        //         setcookie('cookieId', $_SESSION['id'], time()+24*80000) ;
-                        //     }
+                           $_SESSION["email"] = $result["email"];
+                           if (isset($_POST["connexionAutomatique"])) {
+                                setcookie("prenom", $_SESSION["prenom"], time()+8600*30);
+                                setcookie("nom", $_SESSION["nom"], time()+8600*30);
+                                setcookie("email", $_SESSION["email"], time()+8600*30);
+                                setcookie("id", $_SESSION["id"], time()+8600*30);
+                           }                        
+                            //    if(isset($_POST['connexionAutomatique'])) {
+                            //         setcookie('cookiePrenom', $_SESSION['prenom'], time()+24*80000) ;
+                            //         setcookie('cookieNom', $_SESSION['nom'], time()+24*80000) ;
+                            //         setcookie('cookieId', $_SESSION['id'], time()+24*80000) ;
+                            //     }
                         }
                         else {
                              /* On a deux choix pour acceder a la page principale . 1.choix : on le dirige avec header(location:...) function ou bien on lui demande de cliquer un lien pour acceder a la principale */
                             //header('location:index.php) ;
-                           $msg = "<p class='text-white bg-dark p-3 mt-3'> Connexion reussi ! <a href='admin/home.php'> Cliquer pour aller a la page administrateur </a> </p>" ;
+                            $msg = "<p class='text-white bg-dark p-3 mt-3'> Connexion reussi ! <a href='admin/home.php'> Cliquer pour aller a la page administrateur </a> </p>" ;
                         }
                        }
                         else
@@ -87,6 +95,9 @@
 </head>
 <body>
     <div class="container">
+        <?php if(isset($_COOKIE["connexionAutomatique"]) && $_COOKIE["connexionAutomatique"] !== "") : ?>
+        <?php header("location:index.php"); ?>
+        <?php else : ?>
         <div class="row">
             <div class="col-sm-4">
                 <p><a href="register.php" class="btn btn-success btn-md my-4">Enregistrez-vous ?</a></p>
@@ -110,7 +121,7 @@
                         </div>
                         <div class="error"><?php if(isset($errorMotDePasse)){ echo $errorMotDePasse;} ;?></div>  
                     </div>
-                    <div class="form-check">
+                    <div class="form-check" id="connexionAutomatique">
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" name="connexionAutomatique">Se souvenir de moi !
                         </label>
@@ -121,6 +132,7 @@
                 <?php if(isset($msg)) { echo $msg ;} ; ?>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     
 </body>

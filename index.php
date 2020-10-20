@@ -4,7 +4,7 @@
     include 'config/chemin.inc.php' ;
 ?>
 <?php 
-    if(!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) :
+    if(!isset($_SESSION['prenom']) && !isset($_SESSION['nom']) && !isset($_SESSION['id']) && !isset($_SESSION['email']) && !isset($_COOKIE["prenom"]) && !isset($_COOKIE["nom"]) && !isset($_COOKIE["email"]) && !isset($_COOKIE["id"])) :
 ?>
 <a href='loging.php'> Connect you </a> or <a href='register'> Register you </a> 
 
@@ -23,7 +23,13 @@
   </style>
 </head>
 <body>
-<h1 class="text-dark bg-primary d-flex"> WELCOME <?PHP echo ucwLower($_SESSION['prenom']) . " ". ucwLower($_SESSION['nom']) ?>  <button class="btn btn-warning ml-auto"> <a href="logout.php"> Se deconnecter</a> </button></h1> 
+<h1 class="text-dark bg-primary d-flex"> WELCOME <?PHP if(isset($_SESSION['prenom']) &&   isset($_SESSION["nom"])) { echo ucwLower($_SESSION['prenom']). " ". ucwLower($_SESSION['nom']);}
+else {
+  if(isset($_COOKIE["prenom"]) && isset($_COOKIE["nom"])) {
+    echo ucwLower($_COOKIE['prenom']). " ". ucwLower($_COOKIE['nom']);
+  }
+}
+ ?>  <button class="btn btn-warning ml-auto"> <a href="logout.php"> Se deconnecter</a> </button></h1> 
 
    <?php include 'config/nav.inc.php' ?>
    <h2> Le carousel example </h2>
