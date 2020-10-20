@@ -2,7 +2,7 @@
     //Fichier d connexion
     include('config.php') ;
     //inclusion de la fonction
-    include('fonction.php') ;
+    include('valider_input.php') ;
     //Initialisation des valeurs 
     $prenom = $nom = $email = $mot_de_passe = "" ;
     //$erreur["nomErreur"] = $erreur["prenomErreur"] = $erreur["emailErreur"] = $mot_de_passeErr = "" ;
