@@ -1,8 +1,8 @@
 <?php
     //Fichier d connexion
-    include('config.php') ;
+    include('config/connection_database.php') ;
     //inclusion de la fonction
-    include('valider_input.php') ;
+    include('input_validation.php') ;
     //Initialisation des valeurs 
     $prenom = $nom = $email = $mot_de_passe = "" ;
     //$erreur["nomErreur"] = $erreur["prenomErreur"] = $erreur["emailErreur"] = $mot_de_passeErr = "" ;

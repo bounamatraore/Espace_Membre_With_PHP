@@ -1,5 +1,5 @@
 <?php 
-    include '../config/chemin.inc.php' ;
+    include '../config/path.php' ;
 ?>
 <!DOCTYPE html>
 <html lang="en">

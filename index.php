@@ -1,7 +1,7 @@
 <?php 
     session_start() ;
-    include 'fonction.php' ;
-    include 'config/chemin.inc.php' ;
+    include 'input_validation.php';
+    include 'config/path.php' ;
 ?>
 <?php 
     if(!isset($_SESSION['prenom']) && !isset($_SESSION['nom']) && !isset($_SESSION['id']) && !isset($_SESSION['email']) && !isset($_COOKIE["prenom"]) && !isset($_COOKIE["nom"]) && !isset($_COOKIE["email"]) && !isset($_COOKIE["id"])) :
@@ -31,7 +31,7 @@ else {
 }
  ?>  <button class="btn btn-warning ml-auto"> <a href="logout.php"> Se deconnecter</a> </button></h1> 
 
-   <?php include 'config/nav.inc.php' ?>
+   <?php include 'config/nav.php' ?>
    <h2> Le carousel example </h2>
    <div class="container">
 <div id="demo" class="carousel slide" data-ride="carousel">

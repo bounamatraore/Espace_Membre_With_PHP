@@ -1,5 +1,5 @@
 <?php 
-  include 'chemin.inc.php' ;
+  include 'path.php' ;
   $page = htmlspecialchars($_SERVER['PHP_SELF']) ;
 ?>
 <!DOCTYPE html>

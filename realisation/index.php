@@ -1,6 +1,6 @@
 <?php 
-include '../config/chemin.inc.php' ;
-include 'connexion.inc.php' ;
+include("../config/path.php");
+include("../config/connection_database.php");
 //Recuperation des donnees dans la base de donnee
 $query = $conn->prepare("SELECT * FROM fichiers;") ;
 $query->execute() ;
@@ -12,7 +12,7 @@ $results = $query->fetchAll(PDO::FETCH_OBJ);
     <title>Realisation</title>
 </head>
 <body>
-    <?php include '../config/nav.inc.php' ?>
+    <?php include '../config/nav.php' ?>
 
     <div class="container mt-4">
         <div class="row">

@@ -1,5 +1,5 @@
 <?php 
-$conn = new PDO('mysql: host=localhost;dbname=registration', 'root',"") ;
+$conn = new PDO('mysql: host=localhost;dbname=espace_membre', 'root',"") ;
 
 try {
 
@@ -8,7 +8,7 @@ catch (PDOException $err) {
     die('Erreur de connexion '.$err->getMessage()) ;
 }
 
-include '../fonction.php' ;
+include '../input_validation.php' ;
     $contact = [ 
         "prenom" => "",
         "nom" => "",

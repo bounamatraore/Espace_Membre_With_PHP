@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include('config.php') ; 
-    include("valider_input.php") ;
+    include("config/connection_database.php") ; 
+    include("input_validation.php") ;
     $email = "" ;
     $passe = ""; 
     $errorEmail = $errorMotDePasse = "" ;
