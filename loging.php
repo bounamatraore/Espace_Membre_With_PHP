@@ -2,6 +2,7 @@
     session_start();
     include("config/connection_database.php") ; 
     include("input_validation.php") ;
+    include("config/path.php");
     $email = "" ;
     $passe = ""; 
     $errorEmail = $errorMotDePasse = "" ;
@@ -20,7 +21,7 @@
         else {
             $passe = $_POST["passe"];
         }
-        if ($errorMotDePasse === "" && $errorEmail ==="") {
+        if ($errorMotDePasse === "" && $errorEmail === "") {
             $query = "SELECT * FROM utilisateurs_administrateurs WHERE email=:email";
            $rep = $conn->prepare($query) ;
            $rep->execute(array(":email"=>$email)) ;
@@ -40,7 +41,7 @@
                             /* On a deux choix pour acceder a la page principale . 1.choix : on le dirige avec header(location:...) function ou bien on lui demande de cliquer un lien pour acceder a la principale */
                             //header('location:index.php) ;
                            //$msg = "<p class='text-white bg-dark p-3 mt-3'> Connexion reussi ! <a href='index.php'> Cliquer pour aller a la page principale </a> </p>" ;
-                           header("location:index.php");
+                           header("location:$FOLDER_PATH/admin/index.php");
                            $_SESSION['prenom'] = $result['prenom'] ;
                            $_SESSION["nom"] = $result['nom'] ;
                            $_SESSION['id'] = $result['id'] ;

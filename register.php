@@ -1,5 +1,5 @@
 <?php
-    //Fichier d connexion
+    //Fichier de connexion a la base de donne
     include('config/connection_database.php') ;
     //inclusion de la fonction
     include('input_validation.php') ;
@@ -21,7 +21,7 @@
         }
         else {
             //Verifier si le nom contient des lettres et des espaces vides
-            if (!preg_match("/^[a-zA-Z ]{2,50}$/", $prenom)) {
+            if (!preg_match("/^[a-zA-Z-é ]{2,50}$/", $prenom)) {
                 // $erreur["prenomErreur"] = " Seulement les lettres et les espaces qui sont autorises" ;
                 // $ok = 0 ;
                 $erreur["prenomErreur"] = "Seulement les lettres et les espaces qui sont autorises";
@@ -36,7 +36,7 @@
         }
         else {
             //Verifier si le nom contient des lettres et des espaces vides
-            if (!preg_match("/^[a-zA-Z ]{2,50}$/", $nom)) {
+            if (!preg_match("/^[a-zA-Z-é ]{2,50}$/", $nom)) {
                 //    $erreur["nomErreur"] = " Seulement les lettres et les espaces qui sont autorises" ;
                 //    $ok = 0 ;
                 $erreur["nomErreur"] = "Seulement les lettres et les espaces qui sont autorises";

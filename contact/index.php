@@ -4,17 +4,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Contactez-Moi</title>
+    <title>Contactez-Nous</title>
+    <?php include("../config/head.php"); ?>
     <style> 
-        body {
-            background-color:red;
-        }
+        
     </style>
 </head>
 <body>
 
-    <?php  include '../config/nav.inc.php'?>
-    <h2 class="btn btn-primary btn-block"> Contactez-Moi ? </h2>
+    <?php  include '../config/nav.php'?>
+    <h2 class="btn btn-secondary btn-block"> Contactez-Nous ? </h2>
     <div id="demo"></div>
 
     <div class="row">

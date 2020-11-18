@@ -1,0 +1,99 @@
+Contenu du cours
+Module 1 – Langage C#
+Introduction à la plate forme .NET
+
+Historique et description des composants.NET
+Installation de la plate forme .NE
+Structure générale d’un programme C#
+Avantages du langage
+
+Introduction à Visual Studio .NET
+
+Tour de l’interface IDE
+Barre de menus et outils disponibles
+Type de projets et solutions .NET
+Nouveautés de l’interface
+
+Notions du langage C#
+
+Caractéristiques d’un programme C#
+Espace de nom et assemblage
+Syntaxe du langage
+Primitives, opérateurs et expressions
+Structures de contrôle et de répétitions
+Interaction avec l’usager
+
+Vecteurs et matrices
+
+Déclaration, construction et initialisation
+Propriétés
+Passage par référence et passage par valeur
+Tri des vecteurs
+Matrice rectangulaire et personnalisée
+Parcours des valeurs (for each)
+
+Chaînes de caractères
+
+Manipulation, méthodes et propriétés
+Comparaison des chaînes
+Classes String et StringBuilder
+Méthodes statiques de la classe Char
+Classe Regex et expressions régulières
+
+Méthodes
+
+Signatures d’une méthode
+Modificateurs d’accès
+Méthodes finales et méthodes statiques
+Type de retour et paramètres
+Surcharge des méthodes
+
+Module 2 – Programmation orientéeobjet
+Programmation orientée objet
+
+Déclaration de classes et instanciation
+Modificateur d’accès
+Initialisation des membres
+Constructeur et surcharge
+Propriétés
+Compositions d’objets
+Référence THIS
+Membres statiques
+Constantes et membres en lecture seulement
+Indexeur
+
+Héritage et polymorphisme
+
+Héritage
+Super classe « System.object »
+Appels de constructeurs dérivés
+Polymorphisme
+Méthodes virtuelles et redéfinition
+Classes et méthodes abstraites
+Classes scellées
+Interfaces
+Délégation
+Surcharge des opérateurs
+
+Module 3 – GUI et SGBD
+Interface graphique
+
+Processus de création d’une interface graphique
+Composants visuels  et propriétés
+Gestionnaires d’événements
+
+Structures de données et collections
+
+Étude des classes disponibles
+
+Gestion des exceptions
+
+Gestionnaire des exceptions
+Hiérarchie des exceptions
+Propriétés des exceptions
+
+ADO .NET
+
+Requêtes SQL
+Connexion à une base de données
+Manipulation des données
