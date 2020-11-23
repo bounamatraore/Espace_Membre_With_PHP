@@ -10,40 +10,75 @@
        header("location:$FOLDER_PATH/admin/");
    }
    $fileError[] = "";
-   if($_SERVER["REQUEST_METHOD"] === "POST"){
-       if(isset($_FILES["myFile"])) {
+   //if($_SERVER["REQUEST_METHOD"] === "POST"){
+       if(isset($_POST["submit"]) && isset($_FILES["myFile"])) {
     $upload = "../images/" ;
-    $imgFile = $upload . basename($_FILES['myFile']['name']) ;
+    $imgFiles = $upload . basename($_FILES['myFile']['name']) ;
+    $str_replace = ["%", ";","="];
+    $imgFile = str_replace($str_replace, "_",$imgFiles);
+    $tmpNameFile = $_FILES["myFile"]["tmp_name"];
+    $verify = @getimagesize($tmpNameFile);
     //$ok = true ;
 
     //On verifie d'abord si l'utilisateur telechargera une vrai image 
     $fileImageType = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
     
-    
-    if (move_uploaded_file($_FILES['myFile']['tmp_name'], $imgFile)) {
-        // echo "File ". $_FILES['myFile']['name'] ." téléchargé avec succès.\n";
-        // echo "Affichage du contenu\n";
-        $ok = true ;
-        //readfile($_FILES['myFile']['tmp_name']);
-    }
-    else {
-        echo "Choisir une image : ";
-        echo "Nom du fichier : '". $_FILES['myFile']['tmp_name'] . "'.";
-        $ok = false ;
+    //On verifie le fichier qu'on nous envoie , si c'est une image
+        //$verify = getimagesize($_FILES["myFile"]["tmp_name"]);
+     if($verify == false) {
+         $fileError["err"] = "Veuillez choisir une image valide!";
+     } 
+     
+     if(file_exists($imgFile)) {
+         $fileError["err"] = "Le fichier existe deja";
      }
+    //  if($fileImageType !== "jpg" || $fileImageType !== "png") {
+    //      $fileError["err"] = "Le format de l'image n'est pas accepte";
+    //  }
+    
+    // if (move_uploaded_file($tmpNameFile, $imgFile)) {
+    //     // echo "File ". $_FILES['myFile']['name'] ." téléchargé avec succès.\n";
+    //     // echo "Affichage du contenu\n";
+    //     //$ok = true ;
+    //     $file =  $_FILES['myFile']['name'] ;
+    //     //readfile($_FILES['myFile']['tmp_name']);
+    // }
+    // else {
+    //     // echo "Choisir une image : ";
+    //     // echo "Nom du fichier : '". $_FILES['myFile']['tmp_name'] . "'.";
+    //     //$ok = false ;
+    //     $fileError["err"] = "Veuillez choisir une image";
+    //  }
     // print_r($_FILES);
     
-    if ($ok) {
-    $file =  $_FILES['myFile']['name'] ;
+    if (empty($fileError["err"])) {
+        // On va proceder au telechargement du fichier 
+        if (move_uploaded_file($tmpNameFile, $imgFile)) {
+            // echo "File ". $_FILES['myFile']['name'] ." téléchargé avec succès.\n";
+            // echo "Affichage du contenu\n";
+            //$ok = true ;
+            $files =  $_FILES['myFile']['name'] ;
+            $file = str_replace($str_replace, "_",$files);
+            //readfile($_FILES['myFile']['tmp_name']);
+        }
+        else {
+            // echo "Choisir une image : ";
+            // echo "Nom du fichier : '". $_FILES['myFile']['tmp_name'] . "'.";
+            //$ok = false ;
+            $fileError["err"] = "Veuillez choisir une image";
+         }
+    //$file =  $_FILES['myFile']['name'] ;
      $query =  $conn->prepare("INSERT INTO image_realisations(id_realisation, nom) VALUES (:id_realisation, :nom);") ;
     $result = $query->execute([":id_realisation" =>$new_image, ":nom"=>$file]);    
-    header("location:index.php");
+     if($result) {
+         header("location:index.php");
+     }
     }
-    else {
-        echo " Erreur d'insertion" ;
+    //else {
+        //echo "Erreur d'insertion" ;
+    // }
     }
-    }
-  }
+  //}
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +103,7 @@
                 <input type="hidden" name="MAX_FILE_SIZE" value="3000000" /> 
                 <div class="form-group m-2">
                     <input type="file" name="myFile" id="myFile" class="form-control">
+                    <div class="error"><?php if(isset($fileError["err"])){echo $fileError["err"];};?></div>
                 </div>
                     <input type="hidden" name="new_image" id="new_image" value="<?php if(isset($new_image)) { echo $new_image; } ?>">
                 

@@ -1,6 +1,6 @@
 <?php
-    include("../config/connection_database.php");
     include("../config/path.php");
+    include("../config/connection_database.php");
     if(isset($_POST["view"])){
         $view = $_POST["view"];
         $query = $conn->prepare("SELECT * FROM realisations WHERE id = :id;");
@@ -73,8 +73,8 @@
                   </form>
                   <!-- Formulaire de post pour modifier une image  -->
                   <form action="<?php echo htmlspecialchars('edit_image.php'); ?>" method="post">
-                  <input type="hidden" name="edit_image" id="edit_image" value="<?php echo $resultImage->id; ?>">
-                  <input type="submit" name="submit" id="edit_submit" value="Modifier" class="btn btn-outline">
+                  <input type="hidden" name="edit_image" id="edit_image" value="<?php echo $resultImage->id_image; ?>">
+                  <input type="submit" name="edit_submit" id="edit_submit" value="Modifier" class="btn btn-outline">
                   </form>
                   </figure>
                 </div>

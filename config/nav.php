@@ -18,13 +18,13 @@
     
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav navbar-center">
-                <li <?php if($page === "$FOLDER_PATH/index.php") echo "class='active'"; ?>class="nav-item">
+                <li <?php if($page == "/index.php") echo "class='active'"; ?>class="nav-item">
                     <a href="<?php echo $FOLDER_PATH?>/index.php" class="nav-link">ACCUEIL</a>
                 </li>
-                <li <?php if($page === "$FOLDER_PATH/realisation/index.php") echo "class='active'";?> class="nav-item">
+                <li <?php if($page == "/realisation/index.php") echo "class='active'";?> class="nav-item">
                         <a href="<?=$FOLDER_PATH?>/realisation" class="nav-link">R&Eacute;ALISATION</a>
                 </li>
-                <li <?php if($page === "$FOLDER_PATH/contact/index.php") echo "class='active' "; ?> class="nav-item">
+                <li <?php if($page == "/contact/index.php") echo "class='active' "; ?> class="nav-item">
                     <a href="<?=$FOLDER_PATH?>/contact" class="nav-link">CONTACT</a>
                 </li>
             </ul>
